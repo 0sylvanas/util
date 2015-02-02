@@ -94,7 +94,9 @@ function lee_data(type, activityID, success_function, fail_function){
 							shopArray[i].push( tempindex[i][j] );
 						}
 						else{ //有type index  如果shopArray中有相同的index，那么添加到该对象后面，反之添加到前一个对象的后面
-							tempindex[i][j].index == (shopArray[i][ (tempindex[i][j].index-1) ].index) ? shopArray[0].splice( (tempindex[i][j].index), 0, tempindex[i][j] ) : shopArray[0].splice( (tempindex[i][j].index-1), 0, tempindex[i][j] );
+							tempindex[i][j].index == (shopArray[i][ (tempindex[i][j].index-1) ].index) ?
+							shopArray[0].splice( (tempindex[i][j].index), 0, tempindex[i][j] ) :
+							shopArray[0].splice( (tempindex[i][j].index-1), 0, tempindex[i][j] );
 						}
 					}
 				}
