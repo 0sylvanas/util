@@ -169,5 +169,5 @@ function Clock(clockDiv){
 		currDateTime += currDate.getSeconds();
 		//将当前时间赋值到div对象中
 		this.clockDiv.innerHTML = currDateTime;
-	}
+	};
 }
