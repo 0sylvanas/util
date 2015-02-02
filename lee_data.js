@@ -1,3 +1,4 @@
+//创建矩阵数组
 Array.matrix = function(x,y,z){
 	var a,i,j,mat = [];
 	for(i = 0; i < x; i++){
@@ -9,9 +10,15 @@ Array.matrix = function(x,y,z){
 	}
 	return mat;
 };
+/**
+ * [将图片变为焦点图]--无自动，简单动画，支持IE7，hover to show and hide toggle button
+ * 根据页面上的  img-cnt（必填） 字段判断为几张图
+ * 根据 pic_width（必填） 属性初始化 默认宽为440
+ * 默认父类为  coursel
+ */
 function picmove(){
 	var coursels = $('.coursel'),
-		pic_width = 440;
+		pic_width = window.pic_width || 440;
 	coursels.mouseover(function() {
 		var prev = $(this).find('.prev')[0], next = $(this).find('.next')[0], cnt = parseInt($(this).attr('img-cnt'), 10);
 		if (cnt > 1) {
@@ -93,7 +100,6 @@ function lee_data(type, activityID, success_function, fail_function){
 				}
 			}
 			success_function(shopArray);
-			picmove();
 		},
 		error: function() {
 			alert("系统打了个盹~~~");
