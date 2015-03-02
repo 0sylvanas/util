@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="main.css">
+     <base target="_blank">
+    <title>data handle</title>
+    <style>
+        /** 轮播需要的样式 */
+        .shop .coursel a img{width: 440px;height: 290px;}
+        .coursel{overflow: hidden;width: 440px;height: 290px;position: relative;}
+        .coursel .coursel-main{width: 10000px;position: absolute;left: 0px;transition: left 0.8s;}
+        .coursel .coursel-main img {display: block;width: 373px;height: 240px;float: left;border: 0;}
+        .coursel .btn{position: absolute;width:40px;height: 60px;top: 106px;z-index: 1;cursor: pointer;display: none;}
+        .coursel .prev{background: url(../img/prev.png);left: 0;}
+        .coursel .next{background: url(../img/next.png);right:0;}
+    </style>
+</head>
+<body>
+    <div class="bd">
+        <div class="width1000">
+            <div class="clearfix" style="margin-left:30px;margin-bottom:30px;">
+                <div class="label label_chi">豪吃一顿</div>
+                <div class="label label_he">小酌一杯</div>
+                <div class="label label_wan">继续HAPPY</div>
+            </div>
+            <ul class="J_shop-list clearfix" style="margin-left: 50px;"></ul>
+        </div>
+    </div>
+    <script src="http://evt.dianping.com/midas/lib/js/jquery-1.8.3.min.js"></script>
+    <script>
+        var activityId = 530,
+            activityID = '',//活动ID
+            type = 3,   // 分类数 必填
+            pic_width = 440;
+        var html1 = '',
+            html2 = '',
+            html3 = '';
+    </script>
+    <script src="js/json2.min.js"></script>
+    <script src="js/lee_data.js"></script>
+    <script src="http://evt.dianping.com/midas/lib/js/stts.js"></script>
+    <script>
+        lee_data(type, activityID, function (shopArray){
+            for(var i = 0, len = shopArray.length; i < len; i++){
+                for(var j = 0,len2 = shopArray[i].length; j < len2; j++){
+                    shopData = shopArray[i][j];
+                    /**
+                     * 添加小图标
+                     */
+                    // icon = '';
+                    // if ((shopData.dealgroupidURL) && (shopData.dealgroupidURL.trim().length)) {
+                    //  icon += '<a href="' + shopData.dealgroupidURL + '" target="_blank" class="icon icon-group">团</a>';
+                    // };
+                    // if ((shopData.promoidURL) && (shopData.promoidURL.trim().length)) {
+                    //  icon += '<a href="' + shopData.promoidURL + '" target="_blank" class="icon icon-coupon">促</a>';
+                    // };
+                    // if ((shopData.membercardidURL) && (shopData.membercardidURL.trim().length)) {
+                    //  icon += '<a href="' + shopData.membercardidURL + '" target="_blank" class="icon icon-card">卡</a>';
+                    // };
+                    // if ((shopData.hasbooksettingURL) && (shopData.hasbooksettingURL.trim().length)) {
+                    //  icon += '<a href="' + shopData.hasbooksettingURL + '" target="_blank" class="icon icon-book">订</a>';
+                    // };
+                    // if ((shopData.offlineActivityURL) && (shopData.offlineActivityURL.trim().length)) {
+                    //  icon += '<a href="'+ shopData.offlineActivityURL +'" target="_blank" class="icon icon-activity">活</a>';
+                    // };
+                    
+                    /**
+                     * 添加数据
+                     * 需要在图片的 父类的父类 添加class="coursel" img-cnt = 需要轮播的图片数量（通过判断）
+                     * 两个箭头span
+                     * coursel-main：图片的父类
+                     * 通过三元判断有几张轮播图
+                     */
+                    var list = 
+                        '<li class="shop" data-shopid="' + shopData.shopID + '">'+
+                            '<div class="coursel" img-cnt="'+ (shopData['coursel-img3'] ? 4 : shopData['coursel-img2'] ? 3 :shopData['coursel-img1'] ? 2 : 1) +'">'+//判断有几张轮播图
+                                '<span class="btn prev"></span>'+
+                                '<span class="btn next"></span>'+
+                                '<div class="coursel-main">'+
+                                    '<a href="'+ shopData.shopLink +'" target="_blank">'+//同判断有几张轮播图
+                                    '<img class="shop_img" data-src="' + shopData['coursel-img0'] + '"></a>'+
+                                    (shopData['coursel-img1'] ? '<a href="'+ shopData.shopLink+'" target="_blank"><img datasrc="'+ shopData['coursel-img1']+'"></a>' : '') +
+                                    (shopData['coursel-img2'] ? '<a href="'+ shopData.shopLink+'" target="_blank"><img datasrc="'+ shopData['coursel-img2']+'"></a>' : '') +
+                                    (shopData['coursel-img3'] ? '<a href="'+ shopData.shopLink+'" target="_blank"><img datasrc="'+ shopData['coursel-img3']+'"></a>' : '') +
+                                '</div>'+
+                            '</div>'+
+                            '<div class="text">'+
+                                '<div class="title">'+ shopData.shopname +'</div>'+
+                                    '<img class="rank" src="img/remark' + shopData.score + '.png">'+
+                                '<div class="desc">' + shopData.introduction + '</div>'+
+                                '<div class="icon-warp">' + icon + '</div>'+
+                                '<a class="more" href="' + shopData.shopLink + '">查看更多</a>'+
+                            '</div>'+
+                        '</li>';
+                    switch(shopData.type){
+                        case "1":
+                            html1 += list;
+                        break;
+                        case "2":
+                            html2 += list;
+                        break;
+                        case "3":
+                            html3 += list;
+                        break;
+                        default:
+                            html1 += list;
+                        break;
+                    }
+                }
+            }
+            $('.J_shop-list').html(html1);
+            imgLazyLoad();
+            Stts.init({
+                activityId: activityId
+            });
+            picmove();//调用焦点图
+        })              
+        /**
+         * type切换效果
+         */
+        $('.label').on('click',function(){
+            $('.label').css("background", "url(img/btn-y.png)");
+            $('.label').css("color", "#b60031");
+            $(this).css("background", "url(img/btn-o.png)");
+            $(this).css("color", "#fff");
+        });
+        $('.label_chi').on('click',function(){
+            $('.J_shop-list').html(html1);
+            imgLazyLoad();
+            picmove();
+        });
+        $('.label_he').on('click',function(){
+            $('.J_shop-list').html(html2);
+            imgLazyLoad();
+            picmove();
+        });
+        $('.label_wan').on('click',function(){
+            $('.J_shop-list').html(html3);
+            imgLazyLoad();
+            picmove();
+        });
+    </script>
+</body>
+</html>
