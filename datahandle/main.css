@@ -1,154 +1,228 @@
-div.slideBox{ position:relative; width:670px; height:300px; overflow:hidden;}
-div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
-div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
-div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
-div.slideBox ul.items li a img{ margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
-div.slideBox div.tips{ position:absolute; bottom:0px; width:100%; height:40px; background-color:transparent; overflow:hidden;}
-div.slideBox div.tips div.title{ position:absolute; left:0px; top:0px; height:100%;}
-div.slideBox div.tips div.title a{ color:#FFF; font-size:18px; line-height:50px; margin-left:10px; text-decoration:none;}
-div.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
-div.slideBox div.tips div.nums{ position:absolute; right:0px; top:0px; height:100%;}
-div.slideBox div.tips div.nums a{ display:inline-block; >float:left/*For IE.ADD.JENA.201206300844*/; width:20px; height:20px; background-color:#FFF; text-indent:-99999px; margin:15px 10px 0px 0px;}
-div.slideBox div.tips div.nums a.active{ background-color:#093;}
+/* 
+* @Author: haoyang.li
+* @Date:   2015-02-02 11:38:11
+* @Last Modified by:   haoyang.li
+* @Last Modified time: 2015-03-03 20:36:18
+*/
 
-*{
-	padding:0px;
-	margin:0px;
-	font-family: "Microsoft Yahei";
+div.slideBox {
+    position: relative;
+    width: 670px;
+    height: 300px;
+    overflow: hidden;
 }
-body{
-	position: relative;
-	margin: 0 auto;
-	min-width: 1000px;
-	-moz-user-select: none;
+div.slideBox ul.items {
+    position: absolute;
+    float: left;
+    background: none;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
-img{
-	display: block;
+div.slideBox ul.items li {
+    float: left;
+    background: none;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
+div.slideBox ul.items li a {
+    float: left;
+    line-height: normal !important;
+    padding: 0px !important;
+    border: none/*For IE.ADD.JENA.201206300844*/
 
+;
+}
+div.slideBox ul.items li a img {
+    margin: 0px !important;
+    padding: 0px !important;
+    display: block;
+    border: none/*For IE.ADD.JENA.201206300844*/
+
+;
+}
+div.slideBox div.tips {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    overflow: hidden;
+}
+div.slideBox div.tips div.title {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+}
+div.slideBox div.tips div.title a {
+    color: #FFF;
+    font-size: 18px;
+    line-height: 50px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+div.slideBox div.tips div.title a:hover {
+    text-decoration: underline !important;
+}
+div.slideBox div.tips div.nums {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+}
+div.slideBox div.tips div.nums a {
+    display: inline-block;
+    >float: left/*For IE.ADD.JENA.201206300844*/
+
+;
+    width: 20px;
+    height: 20px;
+    background-color: #FFF;
+    text-indent: -99999px;
+    margin: 15px 10px 0px 0px;
+}
+div.slideBox div.tips div.nums a.active {
+    background-color: #093;
+}
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: "Microsoft Yahei";
+}
+body {
+    position: relative;
+    margin: 0 auto;
+    min-width: 1000px;
+    -moz-user-select: none;
+}
+img {
+    display: block;
+}
 .footer-static {
-padding: 20px 0;
-min-width: 1000px;
-background-color: #ffffff;
-text-align: center;
+    padding: 20px 0;
+    min-width: 1000px;
+    background-color: #ffffff;
+    text-align: center;
 }
-	.topimg{
-		background:url(../img/top.jpg) center no-repeat;
-		height: 515px;
-	}
-	.bd{
-		background:url(../img/bg.jpg) center repeat-y;
-	}
-	.width1000{
-		width:1000px;
-		margin:0 auto;
-		background-color: #fff;
-	}
-	.shop{
-		width: 440px;
-		border: 1px solid #e4e4e4;
-		display: block;
-		margin-right: 20px;
-		margin-bottom: 20px;
-		float: left;
-	}
-	.text{
-		padding: 25px;
-		position: relative;
-	}
-	.title{
-		font-size: 24px;
-		color: #292929;
-		height: 40px;
-		line-height: 40px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
-	.rank{
-		padding: 10px 0px;
-		width:100px;
-	}
-	.desc{
-		height: 85px;
-		color: #7b7b7b;
-		font-size: 14px;
-		overflow: hidden;
-		margin-bottom: 20px;
-	}
-	.icon-warp{
-		padding:10px 0px;
-		margin-bottom: 10px;
-	}
-	.more{
-		position: absolute;
-		right: 25px;
-		bottom: 10px;
-		width: 145px;
-		height: 48px;
-		border: 1px solid #fd2064;
-		text-align: center;
-		color: #fd2064;
-		font-size: 18px;
-		line-height: 48px;
-		text-align: center;
-		display: block;
-		cursor: pointer;
-		border-radius: 3px;
-	}
-	.icon{
-		border-radius:3px;
-	    color:#FFFFFF;
-	    float:left;
-	    font-size:13px;
-	    height:26px;
-	    line-height:26px;
-	    margin-right:10px;
-	    padding:2px;
-	    text-align:center;
-	    width:26px;
-	}
-	.icon-group{
-		background-color:#F51B0A;
-	}
-	.icon-coupon{
-		background-color: #FF6600;
-	}
-	.icon-card{
-		background-color: #3299FF;
-	}
-	.icon-book{
-		background-color: #5FA51B;
-	}
-	.icon-activity{
-		background-color: #CA91DF;
-	}
-	.label{
-		background: url(../img/btn-y.png) center no-repeat;
-		width: 287px;
-		height: 80px;
-		float: left;
-		margin-left: 20px;
-		color: #b60031;
-		font-size: 30px;
-		line-height: 2.5;
-		text-align: center;
-		cursor: pointer;
-	}
-	.foot{
-		background: url(../img/foot.jpg) center no-repeat;
-		height: 352px;
-	}
-	.clearfix:after {
-		content: ".";
-		display: block;
-		height: 0;
-		visibility: hidden;
-		clear: both;
-	}
-	.label_chi{
-		background: url(../img/btn-o.png)center no-repeat;
-		width: 287px;
-		height: 80px;
-		color: #fff;
-	}
+.topimg {
+    background: url(../img/top.jpg) center no-repeat;
+    height: 515px;
+}
+.bd {
+    background: url(../img/bg.jpg) center repeat-y;
+}
+.width1000 {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.shop {
+    width: 440px;
+    border: 1px solid #e4e4e4;
+    display: block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+.text {
+    padding: 25px;
+    position: relative;
+}
+.title {
+    font-size: 24px;
+    color: #292929;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.rank {
+    padding: 10px 0px;
+    width: 100px;
+}
+.desc {
+    height: 85px;
+    color: #7b7b7b;
+    font-size: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.icon-warp {
+    padding: 10px 0px;
+    margin-bottom: 10px;
+}
+.more {
+    position: absolute;
+    right: 25px;
+    bottom: 10px;
+    width: 145px;
+    height: 48px;
+    border: 1px solid #fd2064;
+    text-align: center;
+    color: #fd2064;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.icon {
+    border-radius: 3px;
+    color: #FFFFFF;
+    float: left;
+    font-size: 13px;
+    height: 26px;
+    line-height: 26px;
+    margin-right: 10px;
+    padding: 2px;
+    text-align: center;
+    width: 26px;
+}
+.icon-group {
+    background-color: #F51B0A;
+}
+.icon-coupon {
+    background-color: #FF6600;
+}
+.icon-card {
+    background-color: #3299FF;
+}
+.icon-book {
+    background-color: #5FA51B;
+}
+.icon-activity {
+    background-color: #CA91DF;
+}
+.label {
+    background: url(../img/btn-y.png) center no-repeat;
+    width: 287px;
+    height: 80px;
+    float: left;
+    margin-left: 20px;
+    color: #b60031;
+    font-size: 30px;
+    line-height: 2.5;
+    text-align: center;
+    cursor: pointer;
+}
+.foot {
+    background: url(../img/foot.jpg) center no-repeat;
+    height: 352px;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.label_chi {
+    background: url(../img/btn-o.png)center no-repeat;
+    width: 287px;
+    height: 80px;
+    color: #fff;
+}

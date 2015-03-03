@@ -1,3 +1,9 @@
+/* 
+ * @Author: haoyang.li
+ * @Date:   2015-02-02 10:37:44
+ * @Last Modified by:   haoyang.li
+ * @Last Modified time: 2015-03-03 20:35:59
+ */
 //创建矩阵数组
 Array.matrix = function(x, y, z) {
     var a, i, j, mat = [];
@@ -62,7 +68,7 @@ function lee_data(type, activityID, success_function, fail_function) {
         // url: '/activities/activity/newarray',
         success: function(_data) {
             var data = _data;
-            if ( typeof(_data) === "string"){
+            if (typeof(_data) === "string") {
                 data = JSON.parse(_data);
             }
             /**
