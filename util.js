@@ -1,9 +1,3 @@
-/* 
-* @Author: haoyang.li
-* @Date:   2015-01-29 16:10:24
-* @Last Modified by:   haoyang.li
-* @Last Modified time: 2015-03-03 20:35:40
-*/
 /**
  * 判断是否为数组
  */
@@ -67,7 +61,7 @@ function getCookie(c_name) {
  */
 function getQueryStringByName(name) {
     var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
-    if (result == Null || result.length < 1) {
+    if (result == null || result.length < 1) {
         return "";
     }
     return result[1];
@@ -81,14 +75,46 @@ function getQueryStringByName(name) {
  * 字符串处理
  */
 function StringBuffer() {
-    var arr = new Array;
+    var buffer = [],
+        size = 0;
+    //追加字符串
     this.append = function(str) {
-        arr[arr.length] = str;
+        if(str !== null){
+            buffer.push(str);
+            size ++;
+        }
     };
+    //返回字符串
     this.toString = function() {
-        return arr.join("");
+        return buffer.join("");
+    };
+    //清空
+    this.clear = function(key) {
+        size = 0;
+        buffer = [];
+    };
+    //返回数组大小
+    this.size = function() {
+        return size;
+    };
+    //返回数组
+    this.toArray = function() {
+        return buffer;
+    };
+    //倒序返回字符串
+    this.doReverse = function() {
+        var str = buffer.join('');
+        str = str.split('');
+        return str.reverse().join('');
     };
 }
+
+/**
+ * 指定下标添加元素
+ */
+Array.prototype.insert = function(index, item) {
+    this.splice(index, 0, item);
+};
 
 /**
  * 把数组转换成特定符号分割的字符串
